@@ -9,6 +9,8 @@ Este manual explica cómo funciona tu web y cómo cambiar precios o agregar prod
 - **Portada:** muestra tus productos estrella (hoy, la chicha morada, la limonada y la gran combinación) en un carrusel animado.
   Cada 5 segundos cambia de botella y el fondo toma el color del producto.
 - **Nuestras estrellas:** una sección grande para cada producto estrella, con descripción, precio y botón para pedir.
+- **Promoción:** franja verde antes del catálogo: «3 botellas de cualquier sabor + libreta gratis», con su botón
+  «Quiero la promo» que abre el chat con el mensaje listo.
 - **Catálogo y precios:** todos tus productos en tarjetas, con pestañas por categoría (**Bebidas** y **Accesorios básicos**).
   Al tocar la foto se abre una vista ampliada con zoom.
 - **Botón «Lo quiero»:** abre el chat de la página con un mensaje ya escrito, por ejemplo:
@@ -157,6 +159,7 @@ Guarda el archivo y listo: el producto aparece solo en el catálogo, con su prec
 | `contacto` → `whatsapp` | Tu número **con 51 adelante, sin + ni espacios**: `"51997555990"` |
 | `contacto` → `telefono` | Cómo se ve el teléfono: `"+51 997 555 990"` |
 | `contacto` → `mensajeWhatsapp` | Mensaje de la tarjeta verde de WhatsApp en Contacto |
+| `promocion` | La franja de la promo: `titulo`, `texto`, `boton`, `mensaje` (lo que se escribe en el chat) y `regalo` (nombre exacto del producto que se regala, para mostrar su foto). Para quitar la promo, borra todo el bloque `promocion` |
 | `contacto` → `chat` | El chat: `saludo` (primer mensaje de PROP), `estado` (texto bajo el nombre) y `respuestasRapidas` (botones con frases listas) |
 | `contacto` → `mensajeProducto` | Mensaje del botón «Lo quiero». Puedes usar `{producto}`, `{presentacion}`, `{precio}` y `{negocio}` |
 | `contacto` → `correo`, `horario`, `direccion` | Se muestran en Contacto. Si dejas `""`, no aparecen |

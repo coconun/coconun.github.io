@@ -475,6 +475,38 @@
   }
 
   // ==========================================================================
+  // PROMOCIÓN (por ejemplo: 3 botellas + libreta gratis)
+  // ==========================================================================
+  function pintarPromo(promo, productos) {
+    if (!promo || !promo.titulo) return;
+    var seccion = document.getElementById('promo');
+    var fotos = document.getElementById('promo-fotos');
+    var regalo = productos.filter(function (p) { return C.sinTildes(p.nombre) === C.sinTildes(promo.regalo); })[0];
+    var botellas = productos.filter(function (p) { return p !== regalo && p.categoria === 'Bebidas' && p.imagenes.length; }).slice(0, 3);
+
+    botellas.forEach(function (p) {
+      fotos.appendChild(el('img', { class: 'promo__botella', src: p.imagenes[0], alt: '', loading: 'lazy', decoding: 'async' }));
+    });
+    if (regalo && regalo.imagenes.length) {
+      fotos.appendChild(el('span', { class: 'promo__mas', texto: '+' }));
+      fotos.appendChild(el('div', { class: 'promo__regalo' }, [
+        el('img', { src: regalo.imagenes[0], alt: '', loading: 'lazy', decoding: 'async' }),
+        el('span', { class: 'promo__gratis', texto: 'GRATIS' })
+      ]));
+    }
+    var etiqueta = document.getElementById('promo-etiqueta');
+    etiqueta.textContent = promo.etiqueta || 'Promo';
+    document.getElementById('promo-titulo').textContent = promo.titulo;
+    document.getElementById('promo-texto').textContent = promo.texto || '';
+    var boton = document.getElementById('promo-boton');
+    var mensaje = promo.mensaje || promo.titulo;
+    boton.textContent = promo.boton || 'Lo quiero';
+    boton.href = C.enlaceWhatsApp(contacto.whatsapp, mensaje);
+    boton.setAttribute('data-chat', mensaje);
+    seccion.hidden = false;
+  }
+
+  // ==========================================================================
   // 4. NOSOTROS
   // ==========================================================================
   function pintarNosotros(n) {
@@ -806,6 +838,7 @@
     pintarTextos();
     pintarHero(estrellas);
     pintarEstrellas(estrellas);
+    pintarPromo(cfg.promocion, r.productos);
     pintarCatalogo(r.productos);
     pintarNosotros(cfg.nosotros || {});
     pintarContacto();

@@ -12,6 +12,14 @@
     "titulo": "Nuestras estrellas",
     "subtitulo": "Las favoritas de la casa. Desliza y conócelas."
   },
+  "promocion": {
+    "etiqueta": "Promo",
+    "titulo": "Lleva 3 y la libreta va de regalo",
+    "texto": "Compra 3 botellas de cualquier sabor (puedes combinarlas como quieras) y te llevas una libreta kraft de 75 hojas gratis.",
+    "regalo": "Libreta kraft",
+    "boton": "Quiero la promo",
+    "mensaje": "Hola PROP, quiero la promo de 3 botellas + libreta gratis. Mis 3 botellas serían: "
+  },
   "catalogo": {
     "titulo": "Catálogo y precios",
     "subtitulo": "Bebidas y accesorios básicos. Toca la foto para verla de cerca y «Lo quiero» para pedir por WhatsApp."
@@ -62,14 +70,15 @@
     {
       "nombre": "Libreta kraft",
       "categoria": "Accesorios básicos",
-      "presentacion": "Tamaño bolsillo",
+      "presentacion": "75 hojas",
       "precio": 5,
-      "descripcion": "Libreta básica con tapa de cartón kraft y hojas blancas. Práctica para apuntes, pedidos o ideas del día.",
-      "detalles": ["Tapa de cartón kraft", "Hojas blancas", "Tamaño bolsillo"],
+      "descripcion": "Libreta pequeña con tapa de cartón kraft y 75 hojas que se arrancan fácilmente. Práctica para apuntes, listas o pedidos.",
+      "detalles": ["75 hojas", "Hojas fáciles de arrancar", "Tapa de cartón kraft"],
       "imagenes": ["img/libreta.webp"],
       "color": "#b8915f",
       "fondo": "#3b2a17",
-      "palabra": "LIBRETA"
+      "palabra": "LIBRETA",
+      "etiqueta": "Gratis con 3 botellas"
     }
   ],
   "nosotros": {
@@ -103,7 +112,7 @@
       "titulo": "PROP",
       "estado": "Normalmente responde en minutos",
       "saludo": "¡Hola! 👋 Somos PROP. ¿Qué te provoca hoy? Escríbenos aquí tu pedido o consulta.",
-      "respuestasRapidas": ["Quiero hacer un pedido", "Precios por mayor", "¿Hacen delivery?", "¿Cuál es su horario?"]
+      "respuestasRapidas": ["Quiero hacer un pedido", "Quiero la promo 3 botellas + libreta", "Precios por mayor", "¿Hacen delivery?", "¿Cuál es su horario?"]
     }
   },
   "redes": {

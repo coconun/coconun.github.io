@@ -39,6 +39,7 @@ jobs:
         run: |
           mkdir _site
           cp -r index.html config.json css js img _site/
+          if [ -d fonts ]; then cp -r fonts _site/; fi
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

@@ -72,6 +72,19 @@
       <div id="lista-estrellas"></div>
     </section>
 
+    <!-- PROMOCIÓN: se arma con «promocion» de config.json (si no existe, no aparece) -->
+    <section class="promo" id="promo" hidden>
+      <div class="contenedor promo__caja">
+        <div class="promo__fotos" id="promo-fotos" aria-hidden="true"></div>
+        <div class="promo__texto revelar">
+          <span class="etiqueta etiqueta--oferta" id="promo-etiqueta"></span>
+          <h2 id="promo-titulo"></h2>
+          <p id="promo-texto"></p>
+          <a class="boton boton--morado" id="promo-boton" href="#" target="_blank" rel="noopener"></a>
+        </div>
+      </div>
+    </section>
+
     <!-- 3. CATÁLOGO con precios, pestañas y buscador -->
     <section class="seccion catalogo" id="catalogo">
       <div class="contenedor">

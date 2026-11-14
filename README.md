@@ -2,7 +2,8 @@
 
 Web catálogo con precios, animaciones, chat de WhatsApp dentro de la página, llamada y formulario.
 Las estrellas de la página son la **chicha morada**, la **limonada** y **la gran combinación** de 320 ml.
-El catálogo tiene dos categorías: **Bebidas** y **Accesorios básicos** (por ahora, la libreta kraft).
+El catálogo tiene dos categorías: **Bebidas** y **Accesorios básicos** (por ahora, la libreta kraft de 75 hojas).
+Promoción activa: **3 botellas de cualquier sabor + libreta gratis**.
 Está basada en la plantilla `web-negocio`.
 
 - HTML, CSS y JavaScript puros, sin frameworks ni librerías. Pesa unos 175 KB **con** las fotos.
@@ -18,6 +19,7 @@ web-prop/
 ├── js/catalogo.js      ← lógica: precios, filtros, búsqueda y mensajes de WhatsApp
 ├── js/app.js           ← pantalla y animaciones
 ├── img/                ← fotos de los productos (fondo transparente)
+├── fonts/              ← tipografías de la marca: Gagalin y More Sugar (ver fonts/LEEME.md)
 ├── tests/              ← pruebas automáticas
 ├── .github/workflows/  ← publicación automática en GitHub Pages
 ├── ESPECIFICACION.md   ← alcance aprobado
@@ -77,8 +79,8 @@ y la botella visible en menos de 0.8 s.
 
 ## Pendientes con el cliente (antes de publicar)
 
-- [ ] **Confirmar los precios.** Ahora dice S/ 3.50 por botella y S/ 5.00 por la libreta (datos de ejemplo).
-- [ ] Confirmar las descripciones e ingredientes de la chicha, la limonada y la gran combinación, y el tamaño de la libreta.
+- [ ] **Subir las tipografías** Gagalin y More Sugar a `fonts/` (ver `fonts/LEEME.md`). Mientras tanto se usan letras de respaldo.
+- [ ] Confirmar las descripciones e ingredientes de la chicha, la limonada y la gran combinación, 
 - [ ] Correo para recibir los mensajes del formulario y **crear el formulario en Formspree** (ver el manual).
 - [ ] Links de Instagram, Facebook y TikTok.
 - [ ] Horario real y dirección o zona de despacho (para el mapa).
