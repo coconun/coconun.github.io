@@ -1,0 +1,82 @@
+{
+  "negocio": {
+    "nombre": "PROP",
+    "eslogan": "Bebidas peruanas · Lima"
+  },
+  "inicio": {
+    "titulo": "Destapa el sabor de siempre",
+    "subtitulo": "Chicha morada y limonada bien heladas, en botella de 320 ml. Pídelas por WhatsApp y te respondemos al toque.",
+    "botonSecundario": "Ver catálogo"
+  },
+  "estrellas": {
+    "titulo": "Nuestras estrellas",
+    "subtitulo": "Las favoritas de la casa. Desliza y conócelas."
+  },
+  "catalogo": {
+    "titulo": "Catálogo y precios",
+    "subtitulo": "Toca la foto para verla de cerca y «Lo quiero» para pedir por WhatsApp."
+  },
+  "productos": [
+    {
+      "nombre": "Chicha morada",
+      "categoria": "Bebidas",
+      "presentacion": "Botella 320 ml",
+      "precio": 3.5,
+      "descripcion": "La clásica chicha morada de maíz morado, con piña, canela y clavo de olor. Refrescante y con el sabor de casa.",
+      "detalles": ["Maíz morado", "Piña, canela y clavo", "Sin alcohol", "Sírvela bien helada"],
+      "imagenes": ["img/chicha.webp"],
+      "color": "#8e3a9b",
+      "fondo": "#2b0f30",
+      "palabra": "CHICHA",
+      "etiqueta": "Favorita",
+      "estrella": true
+    },
+    {
+      "nombre": "Limonada",
+      "categoria": "Bebidas",
+      "presentacion": "Botella 320 ml",
+      "precio": 3.5,
+      "descripcion": "Limonada natural con limón peruano, el punto exacto entre ácido y dulce. Ideal para el calor de Lima.",
+      "detalles": ["Limón peruano", "Natural", "Sin alcohol", "Sírvela bien helada"],
+      "imagenes": ["img/limonada.webp"],
+      "color": "#9fd23a",
+      "fondo": "#16300e",
+      "palabra": "LIMONADA",
+      "etiqueta": "Nuevo",
+      "estrella": true
+    }
+  ],
+  "nosotros": {
+    "titulo": "¿Por qué PROP?",
+    "texto": "Preparamos bebidas peruanas con insumos de verdad, en una botella práctica para llevar a donde vayas: al trabajo, a la playa o al almuerzo familiar.",
+    "cifras": [
+      { "valor": 320, "sufijo": " ml", "texto": "en cada botella" },
+      { "valor": 0, "sufijo": " %", "texto": "de alcohol" },
+      { "valor": 2, "sufijo": "", "texto": "sabores para elegir" }
+    ],
+    "ventajas": [
+      { "icono": "🌽", "titulo": "Sabor peruano", "texto": "Recetas de siempre, como las de casa." },
+      { "icono": "🧊", "titulo": "Bien helada", "texto": "Lista para tomar al momento." },
+      { "icono": "💬", "titulo": "Pide fácil", "texto": "Un mensaje por WhatsApp y listo." }
+    ],
+    "testimonios": []
+  },
+  "contacto": {
+    "titulo": "Hablemos",
+    "subtitulo": "Escríbenos, llámanos o déjanos un mensaje. Atendemos pedidos por mayor y menor.",
+    "telefono": "+51 997 555 990",
+    "whatsapp": "51997555990",
+    "mensajeWhatsapp": "Hola PROP, vi su página web y quisiera hacer un pedido.",
+    "mensajeProducto": "Hola {negocio}, quiero {producto} ({presentacion}) a {precio}. ¿Está disponible?",
+    "correo": "",
+    "direccion": "Lima, Perú",
+    "mapa": "",
+    "horario": "Lunes a sábado de 9:00 a. m. a 7:00 p. m.",
+    "formspreeId": "TU_ID_DE_FORMSPREE"
+  },
+  "redes": {
+    "facebook": "",
+    "instagram": "",
+    "tiktok": ""
+  }
+}
