@@ -195,8 +195,11 @@ El plan gratis permite 50 mensajes al mes. Mientras no esté activado, el formul
 
 ## 8. Publicar los cambios
 
-Si tu web está en **Netlify**: entra a https://app.netlify.com, abre tu sitio, ve a **Deploys** y arrastra
-la carpeta `web-prop` completa al recuadro. En un minuto los cambios están en línea.
+La web está en **GitHub Pages** (https://coconun.github.io). Para publicar un cambio, súbelo a la rama
+`main` del repositorio (por ejemplo, editando `config.json` directamente en github.com y pulsando
+**Commit changes**). En uno o dos minutos los cambios están en línea; el avance se ve en la pestaña **Actions**.
+Si las pruebas automáticas encuentran un error (por ejemplo, una coma de más en `config.json`), no se publica
+nada y la web sigue mostrando la versión anterior.
 
 **Antes de subir**, revisa en tu computadora (ver el README) que se vea bien y que el botón «Lo quiero»
 del producto nuevo abra WhatsApp con el mensaje correcto.
