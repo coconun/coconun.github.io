@@ -131,7 +131,7 @@ Guarda el archivo y listo: el producto aparece solo en el catálogo, con su prec
 ```json
     {
       "nombre": "Tomatodo PROP",
-      "categoria": "Accesorios",
+      "categoria": "Accesorios básicos",
       "precio": 15,
       "imagenes": ["img/tomatodo.webp"]
     }
