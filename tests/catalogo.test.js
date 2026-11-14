@@ -19,10 +19,31 @@ test('config.json es válido: productos sin errores y con fotos que existen', ()
   assert.match(C.numeroWhatsApp(config.contacto.whatsapp), /^51\d{9}$/);
 });
 
-test('las estrellas actuales son la chicha y la limonada de 320 ml', () => {
+test('las estrellas actuales son la chicha, la limonada y la gran combinación de 320 ml', () => {
   const { productos } = C.prepararProductos(config.productos);
   const nombres = C.estrellas(productos).map(p => p.nombre + ' ' + p.presentacion);
-  assert.deepEqual(nombres, ['Chicha morada Botella 320 ml', 'Limonada Botella 320 ml']);
+  assert.deepEqual(nombres, ['Chicha morada Botella 320 ml', 'Limonada Botella 320 ml', 'La gran combinación Botella 320 ml']);
+});
+
+test('hay una categoría de accesorios básicos con la libreta', () => {
+  const { productos } = C.prepararProductos(config.productos);
+  assert.deepEqual(C.categorias(productos), ['Bebidas', 'Accesorios básicos']);
+  assert.deepEqual(C.filtrar(productos, 'Accesorios básicos', '').map(p => p.nombre), ['Libreta kraft']);
+});
+
+test('la promoción regala la libreta de 75 hojas y los precios no cambian', () => {
+  const { productos } = C.prepararProductos(config.productos);
+  const regalo = productos.find(p => p.nombre === config.promocion.regalo);
+  assert.ok(regalo, 'El regalo de la promoción debe ser un producto del catálogo');
+  assert.equal(regalo.categoria, 'Accesorios básicos');
+  assert.ok(regalo.detalles.includes('75 hojas'));
+  assert.deepEqual(productos.map(p => C.soles(p.precio)), ['S/ 3.50', 'S/ 3.50', 'S/ 3.50', 'S/ 5.00']);
+});
+
+test('el chat de WhatsApp tiene saludo y respuestas rápidas', () => {
+  const chat = config.contacto.chat;
+  assert.ok(chat.saludo);
+  assert.ok(Array.isArray(chat.respuestasRapidas) && chat.respuestasRapidas.length > 0);
 });
 
 test('un producto nuevo solo necesita nombre y precio', () => {
