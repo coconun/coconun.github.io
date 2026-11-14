@@ -7,7 +7,7 @@ Está basada en la plantilla `web-negocio`.
 - HTML, CSS y JavaScript puros, sin frameworks ni librerías. Pesa unos 175 KB **con** las fotos.
 - **Todo el contenido está en `config.json`**: productos, precios, textos y contacto.
 - Para agregar un producto nuevo basta con copiar un bloque en `config.json` y poner su foto en `img/`.
-- No necesita servidor ni base de datos. Se puede publicar gratis en Netlify.
+- No necesita servidor ni base de datos. Se publica gratis en GitHub Pages: https://coconun.github.io
 
 ```
 web-prop/
@@ -18,6 +18,7 @@ web-prop/
 ├── js/app.js           ← pantalla y animaciones
 ├── img/                ← fotos de las botellas (fondo transparente)
 ├── tests/              ← pruebas automáticas
+├── .github/workflows/  ← publicación automática en GitHub Pages
 ├── ESPECIFICACION.md   ← alcance aprobado
 └── MANUAL-DE-USO.md    ← manual para PROP
 ```
@@ -43,6 +44,15 @@ node --test
 
 Las pruebas revisan que `config.json` esté bien escrito y que sus fotos existan, además de los precios en soles,
 el filtro, el buscador y los mensajes y enlaces de WhatsApp.
+
+## Publicar en GitHub Pages
+
+La web se publica sola en **https://coconun.github.io** cada vez que se sube un cambio a la rama `main`.
+El flujo `.github/workflows/pages.yml` corre las pruebas y, si pasan, publica `index.html`, `config.json`,
+`css/`, `js/` e `img/`.
+
+**Una sola vez:** en GitHub, entra a **Settings → Pages** y en **Build and deployment → Source** elige
+**GitHub Actions**. El avance de cada publicación se ve en la pestaña **Actions**.
 
 ## Animaciones
 
