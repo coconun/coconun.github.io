@@ -80,7 +80,7 @@ y la botella visible en menos de 0.8 s.
 ## Pendientes con el cliente (antes de publicar)
 
 - [ ] **Subir las tipografías** Gagalin y More Sugar a `fonts/` (ver `fonts/LEEME.md`). Mientras tanto se usan letras de respaldo.
-- [ ] Confirmar las descripciones e ingredientes de la chicha, la limonada y la gran combinación, 
+- [ ] Confirmar las descripciones e ingredientes de la chicha, la limonada y la gran combinación.
 - [ ] Correo para recibir los mensajes del formulario y **crear el formulario en Formspree** (ver el manual).
 - [ ] Links de Instagram, Facebook y TikTok.
 - [ ] Horario real y dirección o zona de despacho (para el mapa).
