@@ -19,10 +19,22 @@ test('config.json es válido: productos sin errores y con fotos que existen', ()
   assert.match(C.numeroWhatsApp(config.contacto.whatsapp), /^51\d{9}$/);
 });
 
-test('las estrellas actuales son la chicha y la limonada de 320 ml', () => {
+test('las estrellas actuales son la chicha, la limonada y la gran combinación de 320 ml', () => {
   const { productos } = C.prepararProductos(config.productos);
   const nombres = C.estrellas(productos).map(p => p.nombre + ' ' + p.presentacion);
-  assert.deepEqual(nombres, ['Chicha morada Botella 320 ml', 'Limonada Botella 320 ml']);
+  assert.deepEqual(nombres, ['Chicha morada Botella 320 ml', 'Limonada Botella 320 ml', 'La gran combinación Botella 320 ml']);
+});
+
+test('hay una categoría de accesorios básicos con la libreta', () => {
+  const { productos } = C.prepararProductos(config.productos);
+  assert.deepEqual(C.categorias(productos), ['Bebidas', 'Accesorios básicos']);
+  assert.deepEqual(C.filtrar(productos, 'Accesorios básicos', '').map(p => p.nombre), ['Libreta kraft']);
+});
+
+test('el chat de WhatsApp tiene saludo y respuestas rápidas', () => {
+  const chat = config.contacto.chat;
+  assert.ok(chat.saludo);
+  assert.ok(Array.isArray(chat.respuestasRapidas) && chat.respuestasRapidas.length > 0);
 });
 
 test('un producto nuevo solo necesita nombre y precio', () => {

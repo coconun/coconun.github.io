@@ -41,7 +41,7 @@
     if (p.agotado) return el('a', { class: 'boton boton--lima', 'aria-disabled': 'true', texto: 'Agotado' });
     return el('a', {
       class: 'boton boton--lima', href: C.enlaceWhatsApp(contacto.whatsapp, mensajeDe(p)),
-      target: '_blank', rel: 'noopener', 'aria-label': 'Lo quiero: pedir ' + p.nombre + ' por WhatsApp', texto: 'Lo quiero'
+      target: '_blank', rel: 'noopener', 'data-chat': mensajeDe(p), 'aria-label': 'Lo quiero: pedir ' + p.nombre + ' por WhatsApp', texto: 'Lo quiero'
     });
   }
 
@@ -523,7 +523,7 @@
     var canales = document.getElementById('canales');
     var redes = cfg.redes || {};
     [
-      c.whatsapp && { icono: '💬', titulo: 'WhatsApp', texto: 'Respuesta rápida', href: C.enlaceWhatsApp(c.whatsapp, c.mensajeWhatsapp), clase: ' canal--whatsapp' },
+      c.whatsapp && { icono: '💬', titulo: 'WhatsApp', texto: 'Respuesta rápida', href: C.enlaceWhatsApp(c.whatsapp, c.mensajeWhatsapp), clase: ' canal--whatsapp', chat: '' },
       c.telefono && { icono: '📞', titulo: 'Llámanos', texto: c.telefono, href: C.enlaceTelefono(c.telefono) },
       c.correo && { icono: '✉️', titulo: 'Correo', texto: c.correo, href: 'mailto:' + c.correo },
       redes.instagram && { icono: '📸', titulo: 'Instagram', texto: 'Síguenos', href: redes.instagram },
@@ -531,7 +531,7 @@
       redes.tiktok && { icono: '🎵', titulo: 'TikTok', texto: 'Síguenos', href: redes.tiktok }
     ].filter(Boolean).forEach(function (k) {
       var externo = k.href.indexOf('http') === 0;
-      canales.appendChild(el('a', { class: 'canal revelar' + (k.clase || ''), href: k.href, target: externo ? '_blank' : null, rel: externo ? 'noopener' : null }, [
+      canales.appendChild(el('a', { class: 'canal revelar' + (k.clase || ''), href: k.href, target: externo ? '_blank' : null, rel: externo ? 'noopener' : null, 'data-chat': k.chat }, [
         el('span', { class: 'canal__icono', 'aria-hidden': 'true', texto: k.icono }),
         el('strong', { texto: k.titulo }),
         el('span', { texto: k.texto })
@@ -548,8 +548,125 @@
       mapa.hidden = false;
       mapa.appendChild(el('iframe', { src: 'https://maps.google.com/maps?q=' + encodeURIComponent(c.mapa) + '&z=15&output=embed', title: 'Mapa: ' + c.mapa, loading: 'lazy', referrerpolicy: 'no-referrer-when-downgrade' }));
     }
+  }
 
-    document.querySelectorAll('.js-whatsapp').forEach(function (a) { a.href = C.enlaceWhatsApp(c.whatsapp, c.mensajeWhatsapp); });
+  // ==========================================================================
+  // 6. CHAT DE WHATSAPP dentro de la página
+  //    El cliente escribe aquí sin salir de la web; al tocar «Enviar» se abre
+  //    WhatsApp en otra pestaña (o la app en el celular) con el mensaje listo,
+  //    y esta página queda abierta.
+  // ==========================================================================
+  function configurarChat() {
+    var c = contacto;
+    var chat = document.getElementById('chat');
+    var boton = document.getElementById('chat-boton');
+    if (!c.whatsapp) return;
+    var conf = c.chat || {};
+    var mensajes = document.getElementById('chat-mensajes');
+    var rapidas = document.getElementById('chat-rapidas');
+    var form = document.getElementById('chat-form');
+    var texto = document.getElementById('chat-texto');
+    var aviso = document.getElementById('chat-aviso');
+    var saludado = false, ultimoFoco = null;
+
+    document.getElementById('chat-titulo').textContent = conf.titulo || cfg.negocio.nombre;
+    document.getElementById('chat-estado').textContent = conf.estado || 'En línea';
+    boton.hidden = false;
+
+    function hora() { return new Date().toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' }); }
+    function bajar() { mensajes.scrollTop = mensajes.scrollHeight; }
+
+    function burbuja(quien, contenido) {
+      var b = el('div', { class: 'burbuja burbuja--' + quien }, [contenido, el('span', { class: 'burbuja__hora', texto: hora() })]);
+      mensajes.appendChild(b);
+      bajar();
+      return b;
+    }
+
+    // Respuesta de la tienda, con los puntitos de «escribiendo…»
+    function responder(contenido, espera) {
+      if (quieto) { burbuja('ellos', contenido); return; }
+      var puntos = el('div', { class: 'escribiendo', 'aria-label': 'Escribiendo' }, [el('i'), el('i'), el('i')]);
+      mensajes.appendChild(puntos);
+      bajar();
+      setTimeout(function () { puntos.remove(); burbuja('ellos', contenido); }, espera || 900);
+    }
+
+    function ajustarAlto() {
+      texto.style.height = 'auto';
+      texto.style.height = Math.min(texto.scrollHeight, 120) + 'px';
+    }
+
+    (conf.respuestasRapidas || []).forEach(function (r) {
+      rapidas.appendChild(el('button', { type: 'button', texto: r, onclick: function () {
+        texto.value = texto.value.trim() ? texto.value.trim() + '\n' + r : r;
+        ajustarAlto();
+        texto.focus();
+      } }));
+    });
+    rapidas.hidden = !rapidas.children.length;
+
+    function abrir(mensaje) {
+      if (!visor.hidden) cerrarVisor();
+      if (chat.hidden) ultimoFoco = document.activeElement;
+      chat.hidden = false;
+      chat.classList.remove('cerrando');
+      boton.setAttribute('aria-expanded', 'true');
+      boton.setAttribute('aria-label', 'Cerrar chat de WhatsApp');
+      aviso.hidden = true;
+      if (!saludado) {
+        saludado = true;
+        responder(conf.saludo || c.mensajeWhatsapp || '¡Hola! ¿En qué te ayudamos?', 600);
+      }
+      if (mensaje) texto.value = mensaje;
+      ajustarAlto();
+      bajar();
+      setTimeout(function () { texto.focus({ preventScroll: true }); }, 50);
+    }
+
+    function cerrar() {
+      if (chat.hidden) return;
+      boton.setAttribute('aria-expanded', 'false');
+      boton.setAttribute('aria-label', 'Abrir chat de WhatsApp');
+      chat.classList.add('cerrando');
+      setTimeout(function () {
+        chat.hidden = true;
+        chat.classList.remove('cerrando');
+        if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus({ preventScroll: true });
+      }, quieto ? 0 : 200);
+    }
+
+    boton.addEventListener('click', function () { if (chat.hidden) abrir(); else cerrar(); });
+    document.getElementById('chat-cerrar').addEventListener('click', cerrar);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !chat.hidden) cerrar(); });
+    texto.addEventListener('input', ajustarAlto);
+    // En computadora, Enter envía y Shift+Enter hace un salto de línea
+    texto.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && !e.shiftKey && conMouse) { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true })); }
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var msg = texto.value.trim();
+      if (!msg) { texto.focus(); return; }
+      var enlace = C.enlaceWhatsApp(c.whatsapp, msg);
+      window.open(enlace, '_blank', 'noopener');
+      burbuja('yo', msg);
+      texto.value = '';
+      ajustarAlto();
+      responder(el('span', {}, [
+        '¡Listo! Abrimos WhatsApp con tu mensaje para que lo envíes y te respondemos al toque. Si no se abrió, ',
+        el('a', { href: enlace, target: '_blank', rel: 'noopener', texto: 'toca aquí' }), '.'
+      ]));
+    });
+
+    // Todos los botones «Lo quiero» y el de WhatsApp abren este chat con el mensaje ya escrito
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[data-chat]');
+      if (!a || a.getAttribute('aria-disabled') === 'true' || e.ctrlKey || e.metaKey || e.shiftKey) return;
+      e.preventDefault();
+      abrir(a.getAttribute('data-chat') || '');
+    });
   }
 
   function configurarFormulario() {
@@ -692,6 +809,7 @@
     pintarCatalogo(r.productos);
     pintarNosotros(cfg.nosotros || {});
     pintarContacto();
+    configurarChat();
     configurarFormulario();
     pintarPie();
     configurarVisor();

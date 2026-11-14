@@ -1,7 +1,8 @@
 # Web de PROP: bebidas y accesorios (Lima)
 
-Web catálogo con precios, animaciones y contacto directo por WhatsApp, llamada y formulario.
-Las estrellas de la página son la **chicha morada** y la **limonada** de 320 ml.
+Web catálogo con precios, animaciones, chat de WhatsApp dentro de la página, llamada y formulario.
+Las estrellas de la página son la **chicha morada**, la **limonada** y **la gran combinación** de 320 ml.
+El catálogo tiene dos categorías: **Bebidas** y **Accesorios básicos** (por ahora, la libreta kraft).
 Está basada en la plantilla `web-negocio`.
 
 - HTML, CSS y JavaScript puros, sin frameworks ni librerías. Pesa unos 175 KB **con** las fotos.
@@ -16,7 +17,7 @@ web-prop/
 ├── css/estilos.css     ← colores, diseño y animaciones
 ├── js/catalogo.js      ← lógica: precios, filtros, búsqueda y mensajes de WhatsApp
 ├── js/app.js           ← pantalla y animaciones
-├── img/                ← fotos de las botellas (fondo transparente)
+├── img/                ← fotos de los productos (fondo transparente)
 ├── tests/              ← pruebas automáticas
 ├── .github/workflows/  ← publicación automática en GitHub Pages
 ├── ESPECIFICACION.md   ← alcance aprobado
@@ -66,6 +67,7 @@ El flujo `.github/workflows/pages.yml` corre las pruebas y, si pasan, publica `i
 | Tarjetas que se reacomodan animadas al filtrar | Catálogo (con 2 categorías o más) |
 | La foto «vuela» desde la tarjeta a la vista ampliada, con zoom al tocar | Vista ampliada |
 | Contadores con rebote e íconos que saltan | Nosotros |
+| Chat que se abre desde el botón verde, con «escribiendo…» y burbujas | Toda la página |
 
 Todas usan solo `transform` y `opacity` para no trabar el celular. Si el teléfono tiene activado
 **«reducir movimiento»**, se apagan. El carrusel tiene un botón de pausa.
@@ -75,8 +77,8 @@ y la botella visible en menos de 0.8 s.
 
 ## Pendientes con el cliente (antes de publicar)
 
-- [ ] **Confirmar los precios.** Ahora dice S/ 3.50 por botella (dato de ejemplo).
-- [ ] Confirmar las descripciones e ingredientes de la chicha y la limonada.
+- [ ] **Confirmar los precios.** Ahora dice S/ 3.50 por botella y S/ 5.00 por la libreta (datos de ejemplo).
+- [ ] Confirmar las descripciones e ingredientes de la chicha, la limonada y la gran combinación, y el tamaño de la libreta.
 - [ ] Correo para recibir los mensajes del formulario y **crear el formulario en Formspree** (ver el manual).
 - [ ] Links de Instagram, Facebook y TikTok.
 - [ ] Horario real y dirección o zona de despacho (para el mapa).

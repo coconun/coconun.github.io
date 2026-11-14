@@ -14,7 +14,7 @@
   },
   "catalogo": {
     "titulo": "Catálogo y precios",
-    "subtitulo": "Toca la foto para verla de cerca y «Lo quiero» para pedir por WhatsApp."
+    "subtitulo": "Bebidas y accesorios básicos. Toca la foto para verla de cerca y «Lo quiero» para pedir por WhatsApp."
   },
   "productos": [
     {
@@ -44,6 +44,32 @@
       "palabra": "LIMONADA",
       "etiqueta": "Nuevo",
       "estrella": true
+    },
+    {
+      "nombre": "La gran combinación",
+      "categoria": "Bebidas",
+      "presentacion": "Botella 320 ml",
+      "precio": 3.5,
+      "descripcion": "Lo mejor de los dos mundos: limonada limeña y chicha morada juntas en una sola botella. Dulce, ácida y bien peruana.",
+      "detalles": ["Limonada limeña", "Chicha morada", "Sin alcohol", "Sírvela bien helada"],
+      "imagenes": ["img/gran-combinacion.webp"],
+      "color": "#c0577a",
+      "fondo": "#3a1222",
+      "palabra": "COMBINACIÓN",
+      "etiqueta": "Nuevo",
+      "estrella": true
+    },
+    {
+      "nombre": "Libreta kraft",
+      "categoria": "Accesorios básicos",
+      "presentacion": "Tamaño bolsillo",
+      "precio": 5,
+      "descripcion": "Libreta básica con tapa de cartón kraft y hojas blancas. Práctica para apuntes, pedidos o ideas del día.",
+      "detalles": ["Tapa de cartón kraft", "Hojas blancas", "Tamaño bolsillo"],
+      "imagenes": ["img/libreta.webp"],
+      "color": "#b8915f",
+      "fondo": "#3b2a17",
+      "palabra": "LIBRETA"
     }
   ],
   "nosotros": {
@@ -52,7 +78,7 @@
     "cifras": [
       { "valor": 320, "sufijo": " ml", "texto": "en cada botella" },
       { "valor": 0, "sufijo": " %", "texto": "de alcohol" },
-      { "valor": 2, "sufijo": "", "texto": "sabores para elegir" }
+      { "valor": 3, "sufijo": "", "texto": "sabores para elegir" }
     ],
     "ventajas": [
       { "icono": "🌽", "titulo": "Sabor peruano", "texto": "Recetas de siempre, como las de casa." },
@@ -72,7 +98,13 @@
     "direccion": "Lima, Perú",
     "mapa": "",
     "horario": "Lunes a sábado de 9:00 a. m. a 7:00 p. m.",
-    "formspreeId": "TU_ID_DE_FORMSPREE"
+    "formspreeId": "TU_ID_DE_FORMSPREE",
+    "chat": {
+      "titulo": "PROP",
+      "estado": "Normalmente responde en minutos",
+      "saludo": "¡Hola! 👋 Somos PROP. ¿Qué te provoca hoy? Escríbenos aquí tu pedido o consulta.",
+      "respuestasRapidas": ["Quiero hacer un pedido", "Precios por mayor", "¿Hacen delivery?", "¿Cuál es su horario?"]
+    }
   },
   "redes": {
     "facebook": "",

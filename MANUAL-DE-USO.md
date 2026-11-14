@@ -6,15 +6,21 @@ Este manual explica cómo funciona tu web y cómo cambiar precios o agregar prod
 
 ## 1. Qué hace tu web
 
-- **Portada:** muestra tus productos estrella (hoy, la chicha morada y la limonada) en un carrusel animado.
+- **Portada:** muestra tus productos estrella (hoy, la chicha morada, la limonada y la gran combinación) en un carrusel animado.
   Cada 5 segundos cambia de botella y el fondo toma el color del producto.
 - **Nuestras estrellas:** una sección grande para cada producto estrella, con descripción, precio y botón para pedir.
-- **Catálogo y precios:** todos tus productos en tarjetas. Al tocar la foto se abre una vista ampliada con zoom.
-- **Botón «Lo quiero»:** abre WhatsApp con un mensaje ya escrito, por ejemplo:
+- **Catálogo y precios:** todos tus productos en tarjetas, con pestañas por categoría (**Bebidas** y **Accesorios básicos**).
+  Al tocar la foto se abre una vista ampliada con zoom.
+- **Botón «Lo quiero»:** abre el chat de la página con un mensaje ya escrito, por ejemplo:
   *«Hola PROP, quiero Chicha morada (Botella 320 ml) a S/ 3.50. ¿Está disponible?»*.
-  Así sabes al toque qué producto le interesa al cliente.
+  El cliente puede cambiarlo (por ejemplo, poner cuántas quiere) antes de enviarlo.
+  Así sabes al toque qué producto le interesa.
 - **Contacto:** botón de WhatsApp, botón para llamar, formulario que llega a tu correo, redes sociales y horario.
-- **Botón verde flotante** de WhatsApp, siempre visible.
+- **Chat de WhatsApp:** el botón verde flotante abre una ventanita de chat **dentro de la página**, con un saludo y
+  respuestas rápidas («Quiero hacer un pedido», «Precios por mayor»…). El cliente escribe ahí sin salir de la web;
+  al tocar **Enviar**, WhatsApp se abre con el mensaje listo y la página queda abierta detrás.
+  WhatsApp no permite enviar mensajes desde otra página sin pasar por su app, por eso ese último paso
+  siempre abre WhatsApp.
 
 Los pedidos y pagos (Yape, Plin, efectivo) se coordinan por WhatsApp. La web no cobra en línea.
 
@@ -107,7 +113,7 @@ Guarda el archivo y listo: el producto aparece solo en el catálogo, con su prec
 |---|---|---|
 | `nombre` | **Sí** | Nombre del producto |
 | `precio` | **Sí** | Precio en soles, sin comillas: `3.5` |
-| `categoria` | Recomendado | Por ejemplo `"Bebidas"` o `"Accesorios"`. Con 2 categorías o más aparecen pestañas para filtrar |
+| `categoria` | Recomendado | Por ejemplo `"Bebidas"` o `"Accesorios básicos"` (escrita siempre igual). Con 2 categorías o más aparecen pestañas para filtrar |
 | `presentacion` | No | `"Botella 320 ml"`, `"Pack x 6"`, `"600 ml"`… |
 | `descripcion` | No | Una o dos frases |
 | `detalles` | No | Etiquetitas que se ven en la ficha: `["Sin alcohol", "Natural"]` |
@@ -146,11 +152,12 @@ Guarda el archivo y listo: el producto aparece solo en el catálogo, con su prec
 | `inicio` → `titulo`, `subtitulo` | Textos grandes de la portada (la última palabra del título sale en verde) |
 | `estrellas`, `catalogo` | Títulos de esas secciones |
 | `nosotros` → `texto` | Párrafo de «¿Por qué PROP?» |
-| `nosotros` → `cifras` | Los números que se animan (`320 ml`, `0 %`, `2 sabores`). **Si agregas sabores, actualiza el número** |
+| `nosotros` → `cifras` | Los números que se animan (`320 ml`, `0 %`, `3 sabores`). **Si agregas sabores, actualiza el número** |
 | `nosotros` → `ventajas` | Las tres tarjetas con ícono (`icono` es un emoji) |
 | `contacto` → `whatsapp` | Tu número **con 51 adelante, sin + ni espacios**: `"51997555990"` |
 | `contacto` → `telefono` | Cómo se ve el teléfono: `"+51 997 555 990"` |
-| `contacto` → `mensajeWhatsapp` | Mensaje que aparece al tocar el botón verde general |
+| `contacto` → `mensajeWhatsapp` | Mensaje de la tarjeta verde de WhatsApp en Contacto |
+| `contacto` → `chat` | El chat: `saludo` (primer mensaje de PROP), `estado` (texto bajo el nombre) y `respuestasRapidas` (botones con frases listas) |
 | `contacto` → `mensajeProducto` | Mensaje del botón «Lo quiero». Puedes usar `{producto}`, `{presentacion}`, `{precio}` y `{negocio}` |
 | `contacto` → `correo`, `horario`, `direccion` | Se muestran en Contacto. Si dejas `""`, no aparecen |
 | `contacto` → `mapa` | Dirección para el mapa de Google, p. ej. `"Av. Arequipa 1234, Lince, Lima, Perú"`. Con `""` no se muestra |
